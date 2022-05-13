@@ -1,14 +1,21 @@
-import { View, Text } from 'native-base'
+import { Image, Box } from 'react-native'
 import React from 'react'
+import { withTheme } from 'react-native-paper';
 
 
 
-
-const Background = () => {
+const BackgroundImage = (props) => {
     return (
-        <View>
-            <Text>Background</Text>
-        </View>
+        <>
+          
+
+                <Image
+                    style={props.style}
+                    source={props.source}
+                    >
+                </Image>
+           
+        </>
     )
 }
-export default  Background
+export default withTheme(BackgroundImage);
