@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/native";
 import api from "../api";
 
@@ -8,24 +8,37 @@ const HomeImage2 = require('../assets/background/home2.png');
 
 
 
+
+
 const Login = ({ navigation }) => {
 
+    const [allValues, setAllValues] = useState({
+        email: '',
+        password: '',
+    });
+    const changeHandler = e => {
+        setAllValues({ ...allValues, [e.target.name]: e.target.value })
+    }
 
-    const userAuthentication = async (username, password) => {
-        const response = await api.post('/auth/users/login', { username, password });
+    const userAuthentication = async (data) => {
+        const response = await api.post('/auth/users/login', data);
         if (response.status === 200) {
-            navigation.navigate('Home');
+            navigation.navigate('Profile');
         }
     }
 
+    const HandleSubmit = e => {
+        e.preventDefault();
+        const data = {
+            email : email,
+            password : password,
+        }
+        userAuthentication(data)
 
+    }
     const Handlepress = () => {
         navigation.navigate("Register");
     };
-    const [username, setUsername] = React.useState("");
-    const [password, setPassword] = React.useState("");
-
-
 
     return (
         <>
@@ -36,25 +49,27 @@ const Login = ({ navigation }) => {
                         FOOD BACH MAT MOOTCH
                     </Heading>
                 </WrapperColumn>
-                    <Wrapper >
+                <Wrapper >
                     <TextInput
+                        name = 'email'
                         mode='outlined'
-                        label='Username'
-                        value={username}
+                        label='Email'
+                        value={email}
                         width='100%'
-                        
-                        onChangeText={(username) => setUsername(username)}
-                        
+
+                        onChangeText={(email) => setAllValues(email)}
+
                     />
                     <TextInput
+                        name = 'password'
                         mode='outlined'
                         label='Password'
                         value={password}
-                        onChangeText={(password) => setPassword(password)}
-                        
+                        onChangeText={(password) => setAllValues(password)}
+
                     />
-                        <MyButton title='Sign In' mode='contained' color='#92e3a9' compact={true} onPress={() => console.log('fffff')} />
-                    </Wrapper>
+                    <MyButton title='Sign In' mode='contained' color='#92e3a9' compact={true} onPress={() => HandleSubmit} />
+                </Wrapper>
 
 
             </MyWrapper>
@@ -84,22 +99,22 @@ const Login = ({ navigation }) => {
         //             value={password}
         //             onChangeText={text => setPassword(text)}
         //             style={{ marginBottom: 10 }}
-            //         />
-            //         <MyButton title="Sign in" mode="outlained" color="#92e3a9" compact={true} onPress={() => userAuthentication(username, password)} />
-            //     </Wrapper>
-            // </MyWrapper>
+        //         />
+        //         <MyButton title="Sign in" mode="outlained" color="#92e3a9" compact={true} onPress={() => userAuthentication(username, password)} />
+        //     </Wrapper>
+        // </MyWrapper>
 
-        );
-    };
-
-
+    );
+};
 
 
 
 
 
 
-    const ImqgeBg = styled.ImageBackground`
+
+
+const ImqgeBg = styled.ImageBackground`
         position: absolute;
         border-radius: 50%;
         top: 0%;
@@ -108,7 +123,7 @@ const Login = ({ navigation }) => {
         height: 60%;   
         `;
 
-    const MyWrapper = styled.View`
+const MyWrapper = styled.View`
         padding-left: 5px;
         padding-right: 5px;
         flex: 1;
@@ -119,25 +134,25 @@ const Login = ({ navigation }) => {
     
     `
 
-    const Mr5 = styled.View`
+const Mr5 = styled.View`
         margin-right : 25px ;
     `
-    const Mt5 = styled.View`
+const Mt5 = styled.View`
     margin-top : 10px ;
     `
-    const Wrapper = styled.View`
+const Wrapper = styled.View`
         width : 100% ;
         display : flex ;
         flex-direction : row ;
         `;
-    const Heading = styled.Text`
+const Heading = styled.Text`
         font-size : 24px ;
         font-weight : 800 ;     ;
         font-family : Arial ;
         color : #123 ;  
         text-align : center ;
         `;
-    const SubHeading = styled.Text`
+const SubHeading = styled.Text`
         font-size : 18px ;
         font-weight : 400 ;     ;
     font-family : Arial ;

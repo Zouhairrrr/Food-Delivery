@@ -2,13 +2,17 @@ import React from 'react';
 import { withTheme } from 'react-native-paper';
 import { ScrollView, View, Box } from 'react-native'
 import styled from 'styled-components/native';
-
-
-
 import MyButton from '../components/items/ButtonTheme/ButtonsPrimary';
 import IconButtons from '../components/items/ButtonTheme/IconButton';
+
+
+
+
 const HomeImage = require('../assets/background/home.png');
 const HomeImage2 = require('../assets/background/home2.png');
+
+
+
 
 const Home = ({ navigation, theme }) => {
 

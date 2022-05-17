@@ -1,16 +1,15 @@
 import React from 'react';
 import { Button } from 'react-native-paper';
 import styled  from 'styled-components/native';
-
-
 import { withTheme } from 'react-native-paper';
 // Black background and white text in light theme, inverted on dark theme
+
 
 
 const MyButton = (props) => {
     return (
 
-        <Button onPress={props.onPress} style={props.style} compact = {props.compact} contentStyle={props.contentStyle} mode={props.mode} color={props.color} dark={props.dark} >
+        <Button onPress={props.onPress} style={props.style} name = {props.name} compact = {props.compact} contentStyle={props.contentStyle} mode={props.mode} color={props.color} dark={props.dark} >
             {props.title}
         </Button>
     );
@@ -19,7 +18,6 @@ const MyButton = (props) => {
 
 
 const DefaultButton = styled(MyButton)`
-  
     font-size: 20px;
     font-weight: bold;
     padding: 5px 15px;
