@@ -18,7 +18,7 @@ db(process.env.DB_URL);
 
 
 const corsOptions = {
-    origin: "http://localhost:3000",
+    origin: "http://localhost:19006/",
     optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
@@ -26,7 +26,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
 
-app.use('/auth/users', authRoutes)
+app.use('auth/users/', authRoutes)
 
 app.use('/users', usersRoutes) //! users routes
 app.use('/admin', AdminsRoutes);

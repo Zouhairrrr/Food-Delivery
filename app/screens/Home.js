@@ -24,13 +24,13 @@ const Home = ({ navigation, theme }) => {
 
     return (
         <>
-           <IconButtons
-                        icon='home'
-                        color='#92e3a9'
-                        size={44}
-                        style={{ position: 'absolute', top: 0, left: 0  , zIndex: 1 }}
-                        onPress={() => console.log('fffffff')}
-                    />
+            <IconButtons
+                icon='home'
+                color='#92e3a9'
+                size={44}
+                style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
+                onPress={() => console.log('fffffff')}
+            />
             <MyWrapper>
                 <ImqgeBg source={HomeImage} />
                 <WrapperColumn >

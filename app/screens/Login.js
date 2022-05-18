@@ -12,29 +12,38 @@ const HomeImage2 = require('../assets/background/home2.png');
 
 const Login = ({ navigation }) => {
 
-    const [allValues, setAllValues] = useState({
-        email: '',
-        password: '',
-    });
-    const changeHandler = e => {
-        setAllValues({ ...allValues, [e.target.name]: e.target.value })
-    }
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setErrors] = useState('');
+    const [sucsess, setSucsess] = useState('');
+
+
+
 
     const userAuthentication = async (data) => {
-        const response = await api.post('/auth/users/login', data);
-        if (response.status === 200) {
-            navigation.navigate('Profile');
+
+        try {
+            const response = await api.post('auth/users/login', data)
+            setSucsess(response.data.message);
+            console.log(response);
+            setErrors("")
+            setTimeout(() => navigate('/user/profile'), 2000);
+        } catch (error) {
+
+            console.error('There was an error!', error.response.data.message);
+            setErrors(error.response.data.message)
+            setPassword("");
         }
+
     }
+    const HandleSubmit = async () => {
+        console.log("eeee")
 
-    const HandleSubmit = e => {
-        e.preventDefault();
         const data = {
-            email : email,
-            password : password,
+            email: email,
+            password: password,
         }
-        userAuthentication(data)
-
+        await userAuthentication(data)
     }
     const Handlepress = () => {
         navigation.navigate("Register");
@@ -51,24 +60,24 @@ const Login = ({ navigation }) => {
                 </WrapperColumn>
                 <Wrapper >
                     <TextInput
-                        name = 'email'
+                        name='email'
                         mode='outlined'
                         label='Email'
                         value={email}
                         width='100%'
 
-                        onChangeText={(email) => setAllValues(email)}
+                        onChangeText={(email) => setEmail(email)}
 
                     />
                     <TextInput
-                        name = 'password'
+                        name='password'
                         mode='outlined'
                         label='Password'
                         value={password}
-                        onChangeText={(password) => setAllValues(password)}
+                        onChangeText={(password) => setPassword(password)}
 
                     />
-                    <MyButton title='Sign In' mode='contained' color='#92e3a9' compact={true} onPress={() => HandleSubmit} />
+                    <MyButton title='Sign In' mode='contained' color='#92e3a9' onPress={() => HandleSubmit()} />
                 </Wrapper>
 
 
