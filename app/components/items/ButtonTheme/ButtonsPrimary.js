@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'react-native-paper';
-import styled  from 'styled-components/native';
+import styled from 'styled-components/native';
 import { withTheme } from 'react-native-paper';
 // Black background and white text in light theme, inverted on dark theme
 
@@ -9,7 +9,7 @@ import { withTheme } from 'react-native-paper';
 const MyButton = (props) => {
     return (
 
-        <Button onPress={props.onPress} style={props.style} name = {props.name} compact = {props.compact} contentStyle={props.contentStyle} mode={props.mode} color={props.color} dark={props.dark} >
+        <Button onPress={props.onPress} style={props.style} name={props.name} compact={props.compact} contentStyle={props.contentStyle} mode={props.mode} color={props.color} dark={props.dark} required={props.required} >
             {props.title}
         </Button>
     );

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
 import api from "../api";
-
+import { withTheme } from "react-native-paper";
 import TextInput from "../components/items/Inputs/Input";
 import MyButton from '../components/items/ButtonTheme/ButtonsPrimary';
 const HomeImage2 = require('../assets/background/home2.png');
@@ -160,4 +160,4 @@ const Paragraph = styled.Text`
     color : rgba(0,0,0,0.5) ;
     `;
 
-export default Login;
+export default withTheme(Login);

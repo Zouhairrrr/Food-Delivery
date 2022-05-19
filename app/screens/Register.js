@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
 import api from "../api";
-
+import { withTheme } from "react-native-paper";
 import TextInput from "../components/items/Inputs/Input";
 import MyButton from '../components/items/ButtonTheme/ButtonsPrimary';
-const HomeImage2 = require('../assets/background/home2.png');
+const HomeImage2 = require('../assets/background/home3.png');
 
 
 
 
 
 
-const Register = () => {
+const Register = ({ navigation }) => {
 
     const [username, setUsername] = React.useState('')
     const [ConfirmPassword, setConfirmPassword] = React.useState('')
@@ -47,9 +47,10 @@ const Register = () => {
         userAuthentication(data)
     }
 
-    const Handlepress = () => {
-        navigation.navigate("Register");
-    };
+  
+    const HandlePress = (path) => {
+        navigation.navigate(path);
+    }
 
     return (
 
@@ -60,6 +61,9 @@ const Register = () => {
                     <Heading>
                         FOOD BACH MAT MOOTCH
                     </Heading>
+                    <SubHeading >
+                        AJI AHYA NGOLIK  3AMER HADCHI BE3DA
+                    </SubHeading>
                 </WrapperColumn>
 
                 <Wrapper >
@@ -74,7 +78,8 @@ const Register = () => {
                         underlineColor='#92e3a9'
                         activeUnderlineColor='#92e3a9'
                         outlineColor='#92e3a9'
-                        activeOutlineColor='#92e3a9'
+                        activeOutlineColor='#123'
+
                     />
                     <TextInput
                         style={{ marginTop: 10, borderRadius: 10, borderColor: '#92e3a9' }}
@@ -88,7 +93,7 @@ const Register = () => {
                         activeUnderlineColor='#92e3a9'
                         outlineColor='#92e3a9'
                         required={true}
-                        activeOutlineColor='#92e3a9'
+                        activeOutlineColor='#123'
                     />
                     <TextInput
                         style={{ marginTop: 10, borderRadius: 10, borderColor: '#92e3a9' }}
@@ -102,7 +107,8 @@ const Register = () => {
                         activeUnderlineColor='#92e3a9'
                         outlineColor='#92e3a9'
                         required={true}
-                        activeOutlineColor='#92e3a9'
+                        activeOutlineColor='#123'
+
                     />
                     <TextInput
                         style={{ marginTop: 10, borderRadius: 10, color: '#92e3a9', border: 'none' }}
@@ -115,9 +121,8 @@ const Register = () => {
                         underlineColor='#92e3a9'
                         activeUnderlineColor='#92e3a9'
                         outlineColor='#92e3a9'
-                        activeOutlineColor='#92e3a9'
+                        activeOutlineColor='#123'
                         required={true}
-
                     />
                     <TextInput
                         style={{ marginTop: 10, borderRadius: 10, borderColor: '#92e3a9' }}
@@ -130,11 +135,11 @@ const Register = () => {
                         underlineColor='#92e3a9'
                         activeUnderlineColor='#92e3a9'
                         outlineColor='#92e3a9'
-                        activeOutlineColor='#92e3a9'
+                        activeOutlineColor='#123'
                         required={true}
                     />
                     <Mt5></Mt5>
-                    <MyButton title='Sign In' mode='contained' color='#92e3a9' onPress={HandleSubmit} />
+                    <MyButton title='Sign In' mode='contained' color='#92e3a9' onPress={() => HandlePress('Profile')} />
                 </Wrapper>
 
 
@@ -179,10 +184,11 @@ const Wrapper = styled.View`
     
             `;
 const Heading = styled.Text`
-            font-size : 24px ;
+            font-size : 26px ;
+            padding-bottom : 50px;
             font-weight : 800 ;     ;
             font-family : Arial ;
-            color : #123 ;  
+            color : green ;  
             text-align : center ;
             `;
 const SubHeading = styled.Text`
@@ -193,7 +199,7 @@ const SubHeading = styled.Text`
             text-align : center ;
         `;
 const WrapperColumn = styled.View`
-            margin-top : 80px ;
+            margin-top : 180px ;
             display : flex ;
             width : 100% ;
             flex-direction : column ;
@@ -210,4 +216,4 @@ const Paragraph = styled.Text`
         color : rgba(0,0,0,0.5) ;
         `;
 
-export default Register;
+export default withTheme(Register);
