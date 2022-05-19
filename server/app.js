@@ -1,4 +1,5 @@
 const express = require('express')
+const mongoose = require('mongoose');
 const dotEnv = require('dotenv');
 const cors = require("cors");
 const db = require('./config/db.config')
@@ -13,8 +14,8 @@ dotEnv.config();
 
 //!  connection to the database
 
-
 db(process.env.DB_URL);
+
 
 
 const corsOptions = {
@@ -26,7 +27,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
 
-app.use('auth/users/', authRoutes)
+app.use('/auth/users', authRoutes)
 
 app.use('/users', usersRoutes) //! users routes
 app.use('/admin', AdminsRoutes);

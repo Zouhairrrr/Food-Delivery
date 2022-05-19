@@ -4,11 +4,11 @@ const authController = require('../controllers/auth/auth.controller');
 
 
 
-authRoutes.post('register', authController.CreateNewUser);
+authRoutes.post('/register', authController.CreateNewUser);
 
 authRoutes.get('activate-account/:token', authController.ActivateAccountForLogin);
 
-authRoutes.post('login', authController.AuthenticateUser)
+authRoutes.post('/login', authController.AuthenticateUser)
 
 
 authRoutes.post('/forgot-password', authController.ForgotPassword)  //* send email for check the user and send back url for reset password

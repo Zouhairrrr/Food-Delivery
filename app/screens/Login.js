@@ -17,34 +17,30 @@ const Login = ({ navigation }) => {
     const [error, setErrors] = useState('');
     const [sucsess, setSucsess] = useState('');
 
-
-
-
     const userAuthentication = async (data) => {
 
         try {
+            
             const response = await api.post('auth/users/login', data)
-            setSucsess(response.data.message);
-            console.log(response);
-            setErrors("")
-            setTimeout(() => navigate('/user/profile'), 2000);
+            console.log('ddddd')
+            console.log(response.data.message);
+            // setTimeout(() => navigate('/user/profile'), 2000);
         } catch (error) {
-
             console.error('There was an error!', error.response.data.message);
-            setErrors(error.response.data.message)
+            // setErrors(error.message)
             setPassword("");
         }
 
     }
-    const HandleSubmit = async () => {
-        console.log("eeee")
 
+    const HandleSubmit = () => {
         const data = {
-            email: email,
-            password: password,
+            email,
+            password,
         }
-        await userAuthentication(data)
+     userAuthentication(data)
     }
+
     const Handlepress = () => {
         navigation.navigate("Register");
     };
@@ -58,69 +54,44 @@ const Login = ({ navigation }) => {
                         FOOD BACH MAT MOOTCH
                     </Heading>
                 </WrapperColumn>
+
                 <Wrapper >
                     <TextInput
+                        style={{ marginTop: 10, borderRadius: 10, borderColor: '#92e3a9' }}
                         name='email'
                         mode='outlined'
                         label='Email'
                         value={email}
-                        width='100%'
-
                         onChangeText={(email) => setEmail(email)}
-
+                        selectionColor='#92e3a9'
+                        underlineColor='#92e3a9'
+                        activeUnderlineColor='#92e3a9'
+                        outlineColor='#92e3a9'
+                        activeOutlineColor='#92e3a9'
                     />
                     <TextInput
+                        style={{ marginTop: 10, borderRadius: 10, color: '#92e3a9', border: 'none' }}
                         name='password'
                         mode='outlined'
                         label='Password'
                         value={password}
                         onChangeText={(password) => setPassword(password)}
+                        selectionColor='#123'
+                        underlineColor='#92e3a9'
+                        activeUnderlineColor='#92e3a9'
+                        outlineColor='#92e3a9'
+                        activeOutlineColor='#92e3a9'
 
                     />
-                    <MyButton title='Sign In' mode='contained' color='#92e3a9' onPress={() => HandleSubmit()} />
+                    <Mt5></Mt5>
+                    <MyButton title='Sign In' mode='contained' color='#92e3a9' onPress={HandleSubmit} />
                 </Wrapper>
 
 
             </MyWrapper>
         </>
-
-
-        // <MyWrapper>
-        //     <Heading>
-        //        SIGN IN 
-        //     </Heading>
-        //     <SubHeading>
-        //         MATKHAFCH MAGHADICH IJIK JOU3 
-        //     </SubHeading>
-        //     <Paragraph>
-        //         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        //         Donec euismod, nisl eget consectetur sagittis,
-        //     </Paragraph>
-        //     <Wrapper>
-        //         <TextInput
-        //             label="Username"
-        //             value={username}
-        //             onChangeText={text => setUsername(text)}
-        //             style={{ marginBottom: 10 }}
-        //         />
-        //         <TextInput
-        //             label="Password"
-        //             value={password}
-        //             onChangeText={text => setPassword(text)}
-        //             style={{ marginBottom: 10 }}
-        //         />
-        //         <MyButton title="Sign in" mode="outlained" color="#92e3a9" compact={true} onPress={() => userAuthentication(username, password)} />
-        //     </Wrapper>
-        // </MyWrapper>
-
     );
 };
-
-
-
-
-
-
 
 
 const ImqgeBg = styled.ImageBackground`
@@ -133,26 +104,29 @@ const ImqgeBg = styled.ImageBackground`
         `;
 
 const MyWrapper = styled.View`
-        padding-left: 5px;
-        padding-right: 5px;
+        padding-left : 10%;
+        padding-right : 10%;
         flex: 1;
         position : relative ;
         display : flex ;
         flex-direction : column ;
+        align-items : center ;
+        justify-content : center ;
         background-color: rgba(146,227,169,0.2);
-    
-    `
+    `;
 
 const Mr5 = styled.View`
         margin-right : 25px ;
-    `
+    `;
 const Mt5 = styled.View`
     margin-top : 10px ;
-    `
+    `;
 const Wrapper = styled.View`
         width : 100% ;
         display : flex ;
-        flex-direction : row ;
+        flex-direction : column ;
+        justify-content : center ;
+
         `;
 const Heading = styled.Text`
         font-size : 24px ;
@@ -164,9 +138,9 @@ const Heading = styled.Text`
 const SubHeading = styled.Text`
         font-size : 18px ;
         font-weight : 400 ;     ;
-    font-family : Arial ;
-    color : #123 ;  
-    text-align : center ;
+        font-family : Arial ;
+        color : #123 ;  
+        text-align : center ;
     `;
 const WrapperColumn = styled.View`
         margin-top : 80px ;
@@ -185,18 +159,5 @@ const Paragraph = styled.Text`
     text-align : center ;
     color : rgba(0,0,0,0.5) ;
     `;
-
-// const SwitcherButton = styled)`
-//     position : absolute ;
-//     top : 0 ;
-//     right : 0 ;
-//     width : 50px ;
-//     height : 50px ;
-//     background-color : rgba(0,0,0,0.5) ;
-//     border-radius : 50px ;
-//     display : flex ;
-//     align-items : center ;
-//     justify-content : center ;
-//     `;
 
 export default Login;

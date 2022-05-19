@@ -9,9 +9,15 @@ const InputTexts = (props) => {
             mode={props.mode}
             label={props.label}
             value={props.value}
-            width={props.width}
             onChangeText={props.onChangeText}
             style={props.style}
+            selectionColor = {props.selectionColor}
+            underlineColor = {props.underlineColor}
+            activeUnderlineColor = {props.activeUnderlineColor}
+            outlineColor = {props.outlineColor}
+            error = {props.error}
+            activeOutlineColor = {props.activeOutlineColor}
+
             
         />
     );
