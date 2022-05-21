@@ -4,7 +4,7 @@ import { Avatar, withTheme } from 'react-native-paper';
 const ProfileImage = (props) => (
     <Avatar.Image
         size={props.size}
-        source={props.image}
+        source={props.source}
         style={props.style}
         onLoad={props.onLoad}
         onError={props.onError}

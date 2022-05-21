@@ -1,11 +1,12 @@
 import React from 'react';
-import { withTheme, Avatar } from 'react-native-paper';
+import { withTheme, Avatar, Appbar } from 'react-native-paper';
 import { ScrollView, View, Box } from 'react-native'
 import styled from 'styled-components/native';
 import MyButton from '../components/items/ButtonTheme/ButtonsPrimary';
 import IconButtons from '../components/items/ButtonTheme/IconButton';
 import ProfileImage from '../components/items/avatar/Avatar';
 import Drawe from '../components/items/drawer/Drawe';
+import Appnav from '../components/items/appBar/Appnav';
 
 
 const HomeImage = require('../assets/background/profile.png');
@@ -19,60 +20,52 @@ const Profile = ({ navigation, theme }) => {
 
 
 
-  const { colors, fontsSize, fonts } = theme;
+      const { colors, fontsSize, fonts } = theme;
 
-  const HandlePress = () => {
+      const HandlePress = () => {
 
-    Drawe.navigation.navigate('Home');
+            Drawe.navigation.navigate('Home');
 
 
-  }
+      }
 
-  return (
-    <>
+      return (
+            <>
+                  <Wrapper>
 
-      <IconButtons
-        icon='home'
-        color='#92e3a9'
-        size={44}
-        style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
-        onPress={() => console.log('fffffff')}
-      />
-      <ScrollView>
-        <MyWrapper>
+                     <Appnav 
+                        title="Profile"
+                        left={() => <IconButtons icon="menu" onPress={HandlePress} />}
+                        right={() => <IconButtons icon="settings" />}
+                        />
+                        
 
-          <Heading>
-            FOOD BACH MAT MOOTCH
-          </Heading>
+                  </Wrapper>
+                  <IconButtons
+                        icon='home'
+                        color='#92e3a9'
+                        size={44}
+                        style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
+                        onPress={() => console.log('fffffff')}
+                  />
+                  <ScrollView>
+                        <MyWrapper>
+                              <Wrapper >
+                                    <ProfileImage
+                                          source={HomeImage}
+                                          zise={50}
+                                          onLoad={() => console.log('loaded')}
+                                          onError={() => console.log('error')}
+                                          onLoadStart={() => console.log('start')}
+                                          onLoadEnd={() => console.log('end')}
+                                    />
+                              </Wrapper>
 
-          <SubHeading>
-            The best food in the world
-          </SubHeading>
+                        </MyWrapper>
+                  </ScrollView>
+            </>
 
-          <Paragraph>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Donec euismod, nisl eget consectetur sagittis,
-          </Paragraph>
-          <WrapperColumn >
-            <Wrapper >
-              <ProfileImage
-                source={HomeImage}
-                zise={50}
-                onLoad={() => console.log('loaded')}
-                onError={() => console.log('error')}
-                onLoadStart={() => console.log('start')}
-                onLoadEnd={() => console.log('end')}
-              />
-            </Wrapper>
-            <Wrapper >
-            </Wrapper>
-          </WrapperColumn>
-
-        </MyWrapper>
-      </ScrollView>
-    </>
-
-  )
+      )
 }
 
 const ImqgeBg = styled.ImageBackground`
