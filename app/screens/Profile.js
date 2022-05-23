@@ -4,7 +4,7 @@ import { ScrollView, View, Box } from 'react-native'
 import styled from 'styled-components/native';
 import MyButton from '../components/items/ButtonTheme/ButtonsPrimary';
 import IconButtons from '../components/items/ButtonTheme/IconButton';
-import ProfileImage from '../components/items/avatar/Avatar';
+import AvatarExample from '../components/items/avatar/Avatar';
 import Drawe from '../components/items/drawer/Drawe';
 import Appnav from '../components/items/appBar/Appnav';
 
@@ -15,10 +15,6 @@ const HomeImage = require('../assets/background/profile.png');
 
 
 const Profile = ({ navigation, theme }) => {
-
-
-
-
 
       const { colors, fontsSize, fonts } = theme;
 
@@ -51,13 +47,7 @@ const Profile = ({ navigation, theme }) => {
                   <ScrollView>
                         <MyWrapper>
                               <Wrapper >
-                                    <ProfileImage
-                                          source={HomeImage}
-                                          zise={50}
-                                          onLoad={() => console.log('loaded')}
-                                          onError={() => console.log('error')}
-                                          onLoadStart={() => console.log('start')}
-                                          onLoadEnd={() => console.log('end')}
+                                    <AvatarExample
                                     />
                               </Wrapper>
 

@@ -16,6 +16,7 @@ const HomeImage2 = require('../assets/background/home2.png');
 
 const Home = ({ navigation, theme }) => {
 
+
     const { colors, fontsSize, fonts } = theme;
 
     const HandlePress = (path) => {

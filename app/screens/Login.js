@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { withTheme } from "react-native-paper";
 import styled from "styled-components/native";
 import api from "../api";
-import { withTheme } from "react-native-paper";
 import TextInput from "../components/items/Inputs/Input";
 import MyButton from '../components/items/ButtonTheme/ButtonsPrimary';
 const HomeImage2 = require('../assets/background/home2.png');
@@ -16,21 +16,24 @@ const Login = ({ navigation }) => {
     const [password, setPassword] = useState('');
     const [error, setErrors] = useState('');
     const [sucsess, setSucsess] = useState('');
+    const [token, setToken] = useState('');
 
     const userAuthentication = async (data) => {
 
         try {
-            
             const response = await api.post('auth/users/login', data)
-            console.log('ddddd')
-            console.log(response.data.message);
-            // setTimeout(() => navigate('/user/profile'), 2000);
+            
+            setToken(response.data.token);
+            setErrors('');
+            setSucsess(response.data.message);
+            setToken(response.data.token);
+            setTimeout(() => { navigation.navigate('Profile') }, 2000)
         } catch (error) {
             console.error('There was an error!', error.response.data.message);
-            // setErrors(error.message)
+            setErrors(error.response.data.message)
             setPassword("");
+            setSucsess('');
         }
-
     }
 
     const HandleSubmit = () => {
@@ -38,12 +41,9 @@ const Login = ({ navigation }) => {
             email,
             password,
         }
-     userAuthentication(data)
+        userAuthentication(data)
     }
 
-    const Handlepress = () => {
-        navigation.navigate("Register");
-    };
 
     return (
         <>
@@ -56,6 +56,8 @@ const Login = ({ navigation }) => {
                 </WrapperColumn>
 
                 <Wrapper >
+                    {sucsess ? <Paragraph>{sucsess}</Paragraph> : null}
+                    {error ? <Paragraph>{error}</Paragraph> : null}
                     <TextInput
                         style={{ marginTop: 10, borderRadius: 10, borderColor: '#92e3a9' }}
                         name='email'

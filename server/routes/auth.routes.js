@@ -6,7 +6,7 @@ const authController = require('../controllers/auth/auth.controller');
 
 authRoutes.post('/register', authController.CreateNewUser);
 
-authRoutes.get('activate-account/:token', authController.ActivateAccountForLogin);
+authRoutes.get('/activate-account/:token', authController.ActivateAccountForLogin);
 
 authRoutes.post('/login', authController.AuthenticateUser)
 

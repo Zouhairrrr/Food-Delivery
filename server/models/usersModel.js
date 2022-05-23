@@ -8,8 +8,8 @@ const UserSchema = new Schema(
         email: { type: String, required: true, unique: true, lowercase: true },
         phone: { type: String, required: true },
         isActive: { type: Boolean, required: true, default: false },
-        imageProfile : { type: String, required: true },
-        address: { type: String, required: true },
+        imageProfile : { type: String, required: false },
+        address: { type: String, required: false },
         password: { type: String, required: true },
         role: {
             type: String, required: true, default: "user",

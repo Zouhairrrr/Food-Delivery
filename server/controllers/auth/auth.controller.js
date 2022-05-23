@@ -62,7 +62,7 @@ const AuthenticateUser = async (req, res) => {
             const link = `http://localhost:8080/auth/users/activate-account/${linked}`;
             return res.json({
                 success: true,
-                message: 'link to ferify your account',
+                message: 'your account is not activated yet please check your email to activate your account',
                 data: link,
             });
         }
@@ -81,8 +81,10 @@ const AuthenticateUser = async (req, res) => {
 
 const ActivateAccountForLogin = async (req, res) => {
 
+    console.log('heeloooo')
     try {
         const token = req.params.token;
+        console.log(token)
         const TokenIsvalid = jwt.verify(token, process.env.TOKEN_SECRET);
         if (!TokenIsvalid) return res.status(401).json({
             success: false,

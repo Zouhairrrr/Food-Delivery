@@ -13,11 +13,10 @@ const HomeImage2 = require('../assets/background/home3.png');
 
 const Register = ({ navigation }) => {
 
-    const [username, setUsername] = React.useState('')
+    const [name, setName] = React.useState('')
     const [ConfirmPassword, setConfirmPassword] = React.useState('')
     const [phone, setPhone] = React.useState('')
     const [address, setAddress] = React.useState('')
-    const [country, setCountry] = React.useState('')
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setErrors] = useState('');
@@ -27,27 +26,30 @@ const Register = ({ navigation }) => {
 
         try {
 
-            const response = await api.post('auth/users/register', data)
-            console.log('ddddd')
-            console.log(response.data.message);
-            // setTimeout(() => navigate('/user/profile'), 2000);
+            const response = await api.post('auth/users/register', data);
+            setSucsess(response.data.message);
+            setTimeout(() => { HandlePress('Login') }, 2000);
         } catch (error) {
-            console.error('There was an error!', error.response.data.errors.address.message);
+            console.error('There was an error!', error.response.data.message);
             // setErrors(error.message)
             setPassword("");
+            setErrors(error.response.data.errors)
         }
 
     }
 
     const HandleSubmit = () => {
         const data = {
+            name,
             email,
             password,
+            phone,
+            ConfirmPassword
         }
         userAuthentication(data)
     }
 
-  
+
     const HandlePress = (path) => {
         navigation.navigate(path);
     }
@@ -67,13 +69,16 @@ const Register = ({ navigation }) => {
                 </WrapperColumn>
 
                 <Wrapper >
+
+                    {sucsess ? <Paragraph>{sucsess}</Paragraph> : null}
+                    {error ? <Paragraph>{error}</Paragraph> : null}
                     <TextInput
                         style={{ marginTop: 10, borderRadius: 10, borderColor: '#92e3a9' }}
-                        name='username'
+                        name='Name'
                         mode='outlined'
                         label='User Name'
-                        value={username}
-                        onChangeText={(username) => setUsername(username)}
+                        value={name}
+                        onChangeText={(name) => setName(name)}
                         selectionColor='#92e3a9'
                         underlineColor='#92e3a9'
                         activeUnderlineColor='#92e3a9'
@@ -139,7 +144,7 @@ const Register = ({ navigation }) => {
                         required={true}
                     />
                     <Mt5></Mt5>
-                    <MyButton title='Sign In' mode='contained' color='#92e3a9' onPress={() => HandlePress('Profile')} />
+                    <MyButton title='Sign In' mode='contained' color='#92e3a9' onPress={HandleSubmit} />
                 </Wrapper>
 
 
