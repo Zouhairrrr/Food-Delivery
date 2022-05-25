@@ -22,10 +22,17 @@ const Login = ({ navigation }) => {
 
         try {
             const response = await api.post('auth/users/login', data)
-            
+
             setToken(response.data.token);
             setErrors('');
             setSucsess(response.data.message);
+            if (response.data.message === 'your account is not activated yet please check your email to activate your account') {
+                return (
+                    <>
+                        
+                    </>
+                )
+            }
             setToken(response.data.token);
             setTimeout(() => { navigation.navigate('Profile') }, 2000)
         } catch (error) {

@@ -27,30 +27,18 @@ const Profile = ({ navigation, theme }) => {
 
       return (
             <>
-                  <Wrapper>
-
-                     <Appnav 
-                        title="Profile"
-                        left={() => <IconButtons icon="menu" onPress={HandlePress} />}
-                        right={() => <IconButtons icon="settings" />}
-                        />
-                        
-
-                  </Wrapper>
-                  <IconButtons
-                        icon='home'
-                        color='#92e3a9'
-                        size={44}
-                        style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
-                        onPress={() => console.log('fffffff')}
-                  />
+          
                   <ScrollView>
                         <MyWrapper>
                               <Wrapper >
-                                    <AvatarExample
+                                    <AvatarExample 
+                                    icon = 'camera'
+                                    color = '#123'
+                                    size = {44}
+                                    style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
+                                    onPress={() => console.log('fffffff')}
                                     />
                               </Wrapper>
-
                         </MyWrapper>
                   </ScrollView>
             </>

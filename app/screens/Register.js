@@ -7,16 +7,11 @@ import MyButton from '../components/items/ButtonTheme/ButtonsPrimary';
 const HomeImage2 = require('../assets/background/home3.png');
 
 
-
-
-
-
 const Register = ({ navigation }) => {
 
     const [name, setName] = React.useState('')
     const [ConfirmPassword, setConfirmPassword] = React.useState('')
     const [phone, setPhone] = React.useState('')
-    const [address, setAddress] = React.useState('')
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setErrors] = useState('');
@@ -43,10 +38,20 @@ const Register = ({ navigation }) => {
             name,
             email,
             password,
-            phone,
             ConfirmPassword
         }
-        userAuthentication(data)
+        if (!name || !email || !password || !ConfirmPassword) {
+            setErrors('Please fill all the fields')
+        } else if (password !== ConfirmPassword) {
+            setErrors('Password and Confirm Password does not match')
+        } else {
+            userAuthentication(data)
+            setPassword("");
+            setConfirmPassword("");
+            setName("");
+            setEmail("");
+            setErrors("");
+        }
     }
 
 
@@ -86,20 +91,7 @@ const Register = ({ navigation }) => {
                         activeOutlineColor='#123'
 
                     />
-                    <TextInput
-                        style={{ marginTop: 10, borderRadius: 10, borderColor: '#92e3a9' }}
-                        name='Phone'
-                        mode='outlined'
-                        label='Phone'
-                        value={phone}
-                        onChangeText={(phone) => setPhone(phone)}
-                        selectionColor='#92e3a9'
-                        underlineColor='#92e3a9'
-                        activeUnderlineColor='#92e3a9'
-                        outlineColor='#92e3a9'
-                        required={true}
-                        activeOutlineColor='#123'
-                    />
+
                     <TextInput
                         style={{ marginTop: 10, borderRadius: 10, borderColor: '#92e3a9' }}
                         name='email'
