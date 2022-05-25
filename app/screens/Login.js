@@ -4,6 +4,7 @@ import styled from "styled-components/native";
 import api from "../api";
 import TextInput from "../components/items/Inputs/Input";
 import MyButton from '../components/items/ButtonTheme/ButtonsPrimary';
+import ActivateAccount from "./ActivateAccount";
 const HomeImage2 = require('../assets/background/home2.png');
 
 
@@ -27,14 +28,10 @@ const Login = ({ navigation }) => {
             setErrors('');
             setSucsess(response.data.message);
             if (response.data.message === 'your account is not activated yet please check your email to activate your account') {
-                return (
-                    <>
-                        
-                    </>
-                )
+                setTimeout(() => { HandlePress('ActivateAccount') }, 2000);
+            }else{
+                setTimeout(() => { HandlePress('Profile') }, 2000);
             }
-            setToken(response.data.token);
-            setTimeout(() => { navigation.navigate('Profile') }, 2000)
         } catch (error) {
             console.error('There was an error!', error.response.data.message);
             setErrors(error.response.data.message)
@@ -48,7 +45,17 @@ const Login = ({ navigation }) => {
             email,
             password,
         }
-        userAuthentication(data)
+        if (!email || !password) {
+            setErrors('Please fill all the fields')
+        } else {
+            userAuthentication(data)
+            setPassword("");
+            setEmail("");
+            setErrors("");
+        }
+    }
+    const HandlePress = (path) => {
+        navigation.navigate(path);
     }
 
 
@@ -101,6 +108,8 @@ const Login = ({ navigation }) => {
         </>
     );
 };
+
+
 
 
 const ImqgeBg = styled.ImageBackground`
@@ -167,6 +176,15 @@ const Paragraph = styled.Text`
     font-family : Arial ;
     text-align : center ;
     color : rgba(0,0,0,0.5) ;
+    `;
+
+const Model = styled.View`
+        width : 90%;
+        position : absolute;
+        display : flex;
+        flex-direction : column ;
+        align-items : center ;
+        justify-content : center ;
     `;
 
 export default withTheme(Login);

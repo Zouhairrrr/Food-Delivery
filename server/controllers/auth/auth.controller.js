@@ -60,6 +60,7 @@ const AuthenticateUser = async (req, res) => {
             };
             const linked = SignToken.generateAccessToken(payload);
             const link = `http://localhost:8080/auth/users/activate-account/${linked}`;
+            
             return res.json({
                 success: true,
                 message: 'your account is not activated yet please check your email to activate your account',
@@ -79,12 +80,12 @@ const AuthenticateUser = async (req, res) => {
 
 }
 
+
 const ActivateAccountForLogin = async (req, res) => {
 
-    console.log('heeloooo')
     try {
+        const code = process.env.CODE_SECRET
         const token = req.params.token;
-        console.log(token)
         const TokenIsvalid = jwt.verify(token, process.env.TOKEN_SECRET);
         if (!TokenIsvalid) return res.status(401).json({
             success: false,
@@ -109,6 +110,10 @@ const ActivateAccountForLogin = async (req, res) => {
         res.status(400).send('Invalid token !');
     }
 }
+
+
+
+
 
 const ForgotPassword = async (req, res) => {
 
@@ -139,6 +144,17 @@ const ForgotPassword = async (req, res) => {
         res.status(401).send('Invalid email not sent !');
     }
 }
+
+// const ActivateAccountForLoginMobile = (req, res) => {
+
+//         const data = req.body
+
+         
+// }
+
+
+
+
 
 const ActivatePassword = (req, res) => { }
 const ResetPassword = (req, res) => { }
