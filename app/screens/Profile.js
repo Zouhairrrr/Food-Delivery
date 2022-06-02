@@ -4,7 +4,7 @@ import { ScrollView, View, Box } from 'react-native'
 import styled from 'styled-components/native';
 import MyButton from '../components/items/ButtonTheme/ButtonsPrimary';
 import IconButtons from '../components/items/ButtonTheme/IconButton';
-import ProfileImage from '../components/items/avatar/Avatar';
+import AvatarExample from '../components/items/avatar/Avatar';
 import Drawe from '../components/items/drawer/Drawe';
 import Appnav from '../components/items/appBar/Appnav';
 
@@ -15,10 +15,6 @@ const HomeImage = require('../assets/background/profile.png');
 
 
 const Profile = ({ navigation, theme }) => {
-
-
-
-
 
       const { colors, fontsSize, fonts } = theme;
 
@@ -31,34 +27,18 @@ const Profile = ({ navigation, theme }) => {
 
       return (
             <>
-                  <Wrapper>
 
-                     <Appnav 
-                        title="Profile"
-                        left={() => <IconButtons icon="menu" onPress={HandlePress} />}
-                        right={() => <IconButtons icon="settings" />}
-                        /> 
-                  </Wrapper>
-                  <IconButtons
-                        icon='home'
-                        color='#92e3a9'
-                        size={44}
-                        style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
-                        onPress={() => console.log('fffffff')}
-                  />
                   <ScrollView>
                         <MyWrapper>
                               <Wrapper >
-                                    <ProfileImage
-                                          source={HomeImage}
-                                          zise={50}
-                                          onLoad={() => console.log('loaded')}
-                                          onError={() => console.log('error')}
-                                          onLoadStart={() => console.log('start')}
-                                          onLoadEnd={() => console.log('end')}
+                                    <AvatarExample
+                                          icon='camera'
+                                          color='#123'
+                                          size={44}
+                                          style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
+                                          onPress={() => console.log('fffffff')}
                                     />
                               </Wrapper>
-
                         </MyWrapper>
                   </ScrollView>
             </>

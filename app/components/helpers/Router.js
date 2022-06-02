@@ -9,7 +9,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../../screens/Home';
 import Login from '../../screens/Login';
 import Register from '../../screens/Register';
-// import Forgot from './screens/Forgot';
+import ActivateAccount from '../../screens/ActivateAccount';
 import Profile from '../../screens/Profile';
 // import EditProfile from './screens/EditProfile';
 // import ChangePassword from './screens/ChangePassword';
@@ -23,8 +23,8 @@ const Router = () => {
             <Stack.Screen name='Login' component={Login} />
             <Stack.Screen name='Register' component={Register} />
             <Stack.Screen name='Profile' component={Profile} />
+            <Stack.Screen name='ActivateAccount' component={ActivateAccount} />
             {/*
-                        <Stack.Screen name='Details' component={Details} />
                 <Stack.Screen name='Settings' component={Settings} />
                 <Stack.Screen name='About' component={About} />
                 <Stack.Screen name='Forgot' component={Forgot} />
