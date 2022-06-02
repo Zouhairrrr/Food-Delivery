@@ -37,9 +37,7 @@ const Profile = ({ navigation, theme }) => {
                         title="Profile"
                         left={() => <IconButtons icon="menu" onPress={HandlePress} />}
                         right={() => <IconButtons icon="settings" />}
-                        />
-                        
-
+                        /> 
                   </Wrapper>
                   <IconButtons
                         icon='home'
