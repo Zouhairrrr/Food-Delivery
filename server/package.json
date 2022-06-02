@@ -24,6 +24,7 @@
     "mongoose": "^6.1.6",
     "multer": "^1.4.4",
     "node": "^17.3.0",
+    "node-otp": "^1.2.3",
     "nodemailer": "^6.7.2",
     "nodemon": "^2.0.15"
   }

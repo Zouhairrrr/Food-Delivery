@@ -31,6 +31,9 @@ const CreateNewUser = async (req, res) => {
     }
 }
 
+
+//? login user function
+
 const AuthenticateUser = async (req, res) => {
 
     try {
@@ -79,6 +82,11 @@ const AuthenticateUser = async (req, res) => {
 
 }
 
+
+
+
+//* activate account for login function 
+
 const ActivateAccountForLogin = async (req, res) => {
 
     try {
@@ -93,6 +101,8 @@ const ActivateAccountForLogin = async (req, res) => {
             success: false,
             message: 'user not found'
         })
+        // const mysecretepassword = Password.CheckPasswordForLogin(req.codeLogin);
+        const checkCodeforMobile = await Password.CheckPasswordForLogin(req.body.codeLogin);
         user.isActive = true;
         user.refrechToken = '';
         const token_ = SignToken.SignToken(user);
@@ -137,6 +147,9 @@ const ForgotPassword = async (req, res) => {
         res.status(401).send('Invalid email not sent !');
     }
 }
+
+
+
 
 const ActivatePassword = (req, res) => { }
 const ResetPassword = (req, res) => { }

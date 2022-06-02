@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const dotEnv = require('dotenv');
+dotEnv.config();
+
+
 
 
 const HashPassword = (password) => {
@@ -21,6 +25,10 @@ const CheckPassword = (password, confirmPassword) => {
 }
 
 
+const generateOTP = () => {
+
+   
+}
 
 
 const Idmatch = (id) => {

@@ -1,5 +1,4 @@
 const express = require('express')
-const mongoose = require('mongoose');
 const dotEnv = require('dotenv');
 const cors = require("cors");
 const db = require('./config/db.config')
@@ -14,12 +13,12 @@ dotEnv.config();
 
 //!  connection to the database
 
+
 db(process.env.DB_URL);
 
 
-
 const corsOptions = {
-    origin: "http://localhost:19006/",
+    origin: "http://localhost:3000",
     optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
